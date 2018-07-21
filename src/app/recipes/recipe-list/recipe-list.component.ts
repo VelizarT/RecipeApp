@@ -1,3 +1,4 @@
+import { RecipeService } from './../recipe.service';
 import { Recipe } from './../recipe.model';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
@@ -7,20 +8,11 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-  @Output() passRecipeData = new EventEmitter<Recipe>();
+  recipes: Recipe[];
 
-  recipes: Recipe[] = [
-    new Recipe('Pasta Bolognese', 'Tasty pasta', 'https://www.recipetineats.com/wp-content/uploads/2016/08/Spaghetti-Bolognese_3.jpg'),
-    new Recipe('Pasta Carbonara', 'Tasty pasta', 'https://www.recipetineats.com/wp-content/uploads/2016/08/Spaghetti-Bolognese_3.jpg')
-  ];
-
-  onClickedItem(recipe: Recipe) {
-    this.passRecipeData.emit(recipe);
-  }
-
-  constructor() { }
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
+    this.recipes = this.recipeService.getRecipies();
   }
-
 }

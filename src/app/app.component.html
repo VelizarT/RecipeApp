@@ -1,19 +1,10 @@
-<app-header (navigation)="onNavigation($event)"></app-header>  
-  
+<app-header></app-header>
+
 <div class="container">
-  <div *ngIf="navigationString === 'recipes'" class="row">
-    <app-recipes></app-recipes>
-  </div>
-  <div *ngIf="navigationString === 'shoppingList'" class="row">
-    <app-shopping-list></app-shopping-list>
+  <div class="row">
+    <div class="col-md-12">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
 
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <app-header></app-header>    
-      <app-shopping-list></app-shopping-list>
-    </div>  
-  </div>
-</div> -->
